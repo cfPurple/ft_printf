@@ -1,17 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_hex.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cfelix <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/20 22:07:41 by cfelix            #+#    #+#             */
+/*   Updated: 2023/04/20 22:07:44 by cfelix           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-void ft_conv_base(int nb ,char *str)
+void	ft_conv_hex(unsigned int nb, char *str)
 {
-	int c;
+	int	c;
 
 	if (nb == 0)
-		return;
+		return ;
 	c = nb % 16;
-	ft_conv_base(nb / 16 , str);
+	ft_conv_hex(nb / 16, str);
 	ft_putchar(str[c]);
 }
 
-int	ft_hex_len(unsigned	int num)
+int	ft_hex_len(unsigned int num)
 {
 	int	len;
 
@@ -26,11 +38,10 @@ int	ft_hex_len(unsigned	int num)
 
 void	ft_find_format(unsigned int num, char format)
 {
-
 	if (format == 'x')
-		ft_conv_base(num, "0123456789abcdef");
+		ft_conv_hex(num, "0123456789abcdef");
 	if (format == 'X')
-		ft_conv_base(num, "0123456789ABCDEF");
+		ft_conv_hex(num, "0123456789ABCDEF");
 }
 
 int	ft_print_hex(unsigned int num, char format)

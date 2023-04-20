@@ -1,54 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_unsigned.c                                :+:      :+:    :+:   */
+/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfelix <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/20 22:16:25 by cfelix            #+#    #+#             */
-/*   Updated: 2023/04/20 22:18:56 by cfelix           ###   ########.fr       */
+/*   Created: 2023/04/20 22:04:35 by cfelix            #+#    #+#             */
+/*   Updated: 2023/04/20 22:05:41 by cfelix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_put_unsigned(unsigned int n)
+int	ft_print_char(char c)
 {
-	long long	div;
+	write(1, &c, 1);
+	return (1);
+}
 
-	if (n == 0)
+int	ft_print_str(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
 	{
-		ft_putchar('0');
-		return ;
+		write(1, &str[i], 1);
+		i++;
 	}
-	div = 1;
-	while (div <= n)
-		div = div * 10;
-	while (div >= 10)
+	return (i);
+}
+
+void	ft_putstr(char *str)
+{
+	while (str[0])
 	{
-		div = div / 10;
-		ft_putchar((n / div) + '0');
-		n = n % div;
+		write(1, &str[0], 1);
+		(*str)++;
 	}
 }
 
-int	ft_unsigned_len(unsigned int n)
+int	ft_print_percent(void)
 {
-	int	len;
-
-	len = 0;
-	while (n > 0)
-	{
-		len++;
-		n = n / 10;
-	}
-	return (len);
+	write(1, "%", 1);
+	return (1);
 }
 
-int	ft_print_unsigned(unsigned int n)
+void	ft_putchar(char c)
 {
-	ft_put_unsigned(n);
-	if (n == 0)
-		return (1);
-	return (ft_unsigned_len(n));
+	write(1, &c, 1);
 }

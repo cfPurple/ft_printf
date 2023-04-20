@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_nbr.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cfelix <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/20 22:09:46 by cfelix            #+#    #+#             */
+/*   Updated: 2023/04/20 22:09:48 by cfelix           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 void	ft_put_nbr(int n)
@@ -25,13 +37,12 @@ void	ft_put_nbr(int n)
 		ft_putchar((ni / div) + '0');
 		ni = ni % div;
 	}
-
 }
 
 int	ft_print_nbr(int num)
 {
-	int len;
-	long long n;
+	int			len;
+	long long	n;
 
 	len = 0;
 	n = num;
@@ -42,7 +53,7 @@ int	ft_print_nbr(int num)
 	}
 	while (n != 0)
 	{
-		n = n / 10; 
+		n = n / 10;
 		len++;
 	}
 	ft_put_nbr(num);
