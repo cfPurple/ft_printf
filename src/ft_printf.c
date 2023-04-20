@@ -1,18 +1,4 @@
 #include "ft_printf.h"
-#include <stdio.h>
-# include <limits.h>
-
-/*void print_va_list(va_list args)
-{
-    int i;
-    char* str;
-    double d;
-
-    while ((i = va_arg(args, int)) != 0) {
-        printf("Integer argument: %c\n", i);
-    }
-
-}*/
 
 int	ft_formats(va_list *args, char format)
 {
@@ -22,7 +8,13 @@ int	ft_formats(va_list *args, char format)
 	if (format == 'c')
 		len += ft_print_char(va_arg(*args, int));
 	else if (format == 's')
-		len += ft_print_str(va_arg(*args, char *));
+	{ 
+		str = va_arg(*args, char*);
+		if (str == NULL)
+			len += ft_print_str("(null)");
+		else
+		len += ft_print_str(str);
+	}
 	else if (format == 'p')
 		len += ft_print_ptr(va_arg(*args, unsigned long long));
 	else if (format == 'd' || format == 'i')
@@ -62,54 +54,6 @@ int    ft_printf(const char *str, ...)
 	}
 	va_end(args);
 	return (length);
-}
-
-int	ft_print_char(char c)
-{
-	write(1, &c, 1);
-	return (1);
-}
-
-int	ft_print_str(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (str)
-	{ 
-		while (str[i])
-		{
-			write(1, &str[i], 1);
-			i++;
-		}
-	}
-	else
-	{
-		ft_putstr("(null)");
-		return (6);
-	}
-	return (i);
-}
-
-
-void	ft_putstr(char *str)
-{
-	while (str[0])
-	{
-		write(1, &str[0], 1);
-		(*str)++;
-	}
-}
-
-int	ft_print_percent(void)
-{
-	write(1, "%", 1);
-	return (1);
-}
-
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
 }
 
 int main()
