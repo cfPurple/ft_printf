@@ -68,22 +68,12 @@ int	ft_printf(const char *str, ...)
 	return (length);
 }
 
-/*int main()
+/*
+int main()
 {
 
-//printf("\n%d\n",ft_printf(" %x ", INT_MIN));
-//ft_printf(" %d \n", 0);
-//printf("\n%d\n",printf(" %x ", INT_MIN));
-//printf(" %d \n", 0);
-//	ft_printf(" %c %c %c %c %c %c ", '0', '8', '0', '5', '6', '7');
-	//ft_printf(" %p %p ", LONG_MIN, LONG_MAX);
-	//printf(" %p %p ", LONG_MIN, LONG_MAX);
-	//printf(" %p %p ", -ULONG_MAX, ULONG_MAX);
-	//printf(" NULL %s NULL ", NULL);
-	//ft_printf(" NULL %s NULL ", NULL);
-	//ft_printf(" %p %p ", INT_MIN, INT_MAX);
-	//printf(" %p %p ", INT_MIN, INT_MAX);
-	ft_printf(" %p %p ", LONG_MIN, LONG_MAX);
-	//printf(" %p %p ", LONG_MIN, LONG_MAX);
-//	return 1;
-}*/
+	printf(" %p %p ", 0, 0);
+	ft_printf(" %p %p ", 0, 0);
+
+}
+*/
